@@ -2,9 +2,11 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-
+  
 }
-
+html {
+    scroll-behavior: smooth;
+  }
 nav{
     display: flex;
     flex-direction: row;
@@ -144,7 +146,7 @@ section{
 }
 
 .cardcontainer{
-                background-color: #b91c1c;			
+                background-color: white;			
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -156,9 +158,11 @@ section{
                 border-radius: 20px;
     
 }
-
+.cardcontainer:hover{
+    border: 2px solid #b91c1c;
+}
 .cardimg img{
-   width: 200px;
+   width: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,7 +171,7 @@ section{
 }
 
 .content{
-    color: white;
+    color: black;
     float: left;
     display: flex;
     justify-content: center;
@@ -188,11 +192,78 @@ section{
 
 .rpice{
 font-size: 17px;	
-color:#fb923c ;		
+color:orangered ;		
 font-weight: 400;
 }
 
 .sold{
     font-size: 13px;
     
+}
+
+.footer{
+    background-color: #f87171;
+    display: flex;
+    gap: 10em;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2em;
+    padding-left: 15em;
+    padding-right: 15em;
+}
+
+.logos{
+    display: flex;
+    gap: 1em;
+   margin-top: 1em;
+    color: white;
+    align-items: center;
+
+}
+
+.logo{
+    margin-top: 1em;
+}
+
+.contacts{
+    font-size: 15px;
+}
+
+
+.buttoncon{
+    display: flex ;
+    justify-content: center;
+    background-color: #d1d5db;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.see{
+    background-color: #b91c1c;
+    padding: 11px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: none;
+    color: white;
+}
+.see:hover{
+    background-color: #fca5a5;
+    color: #b91c1c;
+    border: 1px solid #b91c1c;
+}
+
+.see1{
+    background-color: #b91c1c;
+    padding: 11px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: none;
+    color: white;
+    display: none;
+    border-radius: 50%;
+}
+.see1:hover{
+    background-color: #fca5a5;
+    color: #b91c1c;
+    border: 1px solid #b91c1c;
 }
