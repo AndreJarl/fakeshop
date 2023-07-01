@@ -1,19 +1,8 @@
 
 const shop = document.querySelector('.shop')
-const seeMore = document.querySelector('.see');
-let num = 4;
-let displayProducts = [];
-
-
-// displayPro();
 
 filterPro();
-// initPro();
 displayPro();
-
-
-  
-
 
 function filterPro() {
    const category = document.getElementById('categories');
@@ -23,7 +12,7 @@ function filterPro() {
      console.log(selectedCategory);
 
        if(selectedCategory === 'all'){
-          initPro();
+          displayPro();
        }else{
      let url = 'https://fakestoreapi.com/products/category/';
  
@@ -81,43 +70,13 @@ function displayPro(){
                 </div>
                 </div>
                 `;
-                displayProducts.push(product.id);
+               
             });
         });
         
    
    }
    
-
-   function initPro(){
-      fetch('https://fakestoreapi.com/products')
-           .then(response =>{
-              return response.json();
-           })
-           .then(data=>{
-            
-             shop.innerHTML = "";
-               data.forEach(product => {
-                   shop.innerHTML += `
-                   <div class="cardcontainer">
-                   <div class="cardimg">
-                                   <img src="${product.image}" alt="">
-                   </div>
-                   <div class="content">
-                                   <p class="title">${product.title}</p>
-                                <div class="prices">
-                   <p class="rpice">₱ ${product.price}</p>
-                   <p class="sold">12 sold</p>
-                                </div>
-                   </div>
-                   </div>
-                   `;
-                   displayProducts.push(product.id);
-               });
-           });
-           
-      
-      }
       
 
       // [
