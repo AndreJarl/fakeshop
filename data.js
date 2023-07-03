@@ -92,7 +92,6 @@ function displayInfo() {
       const productImageSrc = container.querySelector('.cardimg img').getAttribute('src');
       const productCount = container.querySelector('.sold').textContent;
       const description = container.querySelector('.desc').textContent;
-
       let html= `
       <div class="cartimg">
       <div class="x">
@@ -128,15 +127,23 @@ function displayInfo() {
       </div>
        
       `;
+     
       cartcon.innerHTML = html;
       
            const x = document.querySelector('.x');
  
             x.addEventListener('click', ()=>{
-                cartmodal.style.marginTop = "-35em";
+                cartmodal.style.marginTop = "-105em";
             })
 
     });
   });
 }
 
+// for tommorow
+
+      // cart.push({
+      //   productTitle,
+      //   productPrice
+      // })
+      // console.log(cart);
