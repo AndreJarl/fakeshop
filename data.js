@@ -41,6 +41,10 @@ function filterPro() {
                      <p class="sold">12 sold</p>
                    </div>
                  </div>
+                 <div class = "proBtn">
+                   <button class="addcart" style ="color: black;">Add to cart</button>
+                   <button class="buynow">Buy now</button>
+                   </div>
                </div>
              `;
              displayInfo();
@@ -70,6 +74,10 @@ function displayPro() {
                     <p class="rpice">₱ ${product.price}</p>
                     <p class="sold">${product.rating.count} sold</p>
                   </div>
+                </div>
+                <div class = "proBtn">
+                <button class="addcart" style ="color: black;">Add to cart</button>
+                <button class="buynow">Buy now</button>
                 </div>
               </div>
             `;
