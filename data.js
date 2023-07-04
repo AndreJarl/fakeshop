@@ -147,7 +147,16 @@ function displayInfo() {
     });
   });
 }
+  const cartBtn = document.querySelector('.cart'); 
+  const cartpromodal = document.querySelector('.cartpromodal'); 
 
+  cartBtn.addEventListener('click',()=>{
+    if (cartpromodal.style.right === "-100%") {
+      cartpromodal.style.right = "0";
+    } else{
+      cartpromodal.style.right = "-100%";
+    }
+  })
 // for tommorow
 
       // cart.push({
