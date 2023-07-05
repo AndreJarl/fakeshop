@@ -2,6 +2,17 @@ const shop = document.querySelector('.shop');
 const cartcon = document.querySelector('.cartcon');
 const cartmodal = document.querySelector('.cartmodal');
 const closebtn = document.querySelector('.x');
+const addedcart = document.querySelector('.addedcart');
+const cartBtn = document.querySelector('.cart'); 
+const cartpromodal = document.querySelector('.cartpromodal'); 
+
+cartBtn.addEventListener('click',()=>{
+  if (cartpromodal.style.right === "-100%") {
+    cartpromodal.style.right = "0";
+  } else{
+    cartpromodal.style.right = "-100%";
+  }
+})
 
 
 filterPro();
@@ -48,6 +59,7 @@ function filterPro() {
                </div>
              `;
              displayInfo();
+             addTOcart()
            });
          });
       }
@@ -61,7 +73,7 @@ function displayPro() {
         })
         .then(data => {
           shop.innerHTML = "";
-          data.forEach(product => {
+          data.forEach(product => {   
             shop.innerHTML += `
               <div class="cardcontainer">
                 <div class="cardimg">
@@ -81,16 +93,80 @@ function displayPro() {
                 </div>
               </div>
             `;
+         
             displayInfo();
+           
+            addTOcart()
           });
         });
 }
 
+function addTOcart() {
+  
+  const addCartButtons = document.querySelectorAll('.addcart');
+  addCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productTitle = button.parentNode.parentNode.querySelector(".title").textContent;
+      const productPrice = button.parentNode.parentNode.querySelector(".rpice").textContent;
+      const productImageSrc = button.parentNode.parentNode.querySelector('.cardimg img').getAttribute('src');
+      let productExists = false;
+
+      const existingProducts = document.querySelectorAll('.productModal');
+      existingProducts.forEach(product => {
+        const existingTitle = product.querySelector('.proname p').textContent;
+        if (existingTitle === productTitle) {
+          const countElement = product.querySelector('.countnum');
+          const currentCount = parseInt(countElement.textContent);
+          countElement.textContent = currentCount + 1;
+
+          const priceElement = product.querySelector('.price');
+          const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+          const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+          priceElement.textContent = `Price: ${updatedPrice.toFixed(2)}`;
+
+         
+          productExists = true;
+
+
+        }
+      });
+
+      if (!productExists) {
+        addedcart.innerHTML += `
+          <div class="productModal">
+            <div class="proImg">
+              <img style ="width: 50px;"  src="${productImageSrc}" alt="" srcset="">
+            </div>
+            <div class="proContent">
+              <div class="proname">
+                <p style= "font-size : 10px;"  >${productTitle}</p>
+              </div>
+              <div class="proquantity">
+                <div class="counter">
+                  <button class="incre">+</button>
+                  <p class="countnum">1</p>
+                  <button class="decre">-</button>
+                </div>
+                <div class="price" style= "font-size : 10px;">Price: ${productPrice}</div>   
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    });
+  });
+}
+
+
+
 
 
 function displayInfo() {
+ 
   const cardcontainer = document.querySelectorAll('.cardcontainer');
+
   cardcontainer.forEach(container => {
+  
     container.addEventListener("click", () => {
       cartmodal.style.marginTop = "5em";
       // cartcon.style.marginLeft = "20em";
@@ -105,11 +181,11 @@ function displayInfo() {
       <div class="x">
       <img style="width: 30px;" src="images/close.png" alt="" srcset="">
        </div>
-      <img src="${productImageSrc}" alt="" srcset="">
+      <img class = "cardimg" src="${productImageSrc}" alt="" srcset="">
       </div>
       <div class="cartinfo">
            <div class="proname">
-              <p>${productTitle}</p>
+              <p class ="title">${productTitle}</p>
            </div>
            <div class ="desc">
            <p>${description}</p>
@@ -125,7 +201,7 @@ function displayInfo() {
                   </div>
            </div>
            <div class="cartprice">
-                  <p style="font-size: 20px; color: orangered;">${productPrice}</p>
+                  <p class = "rprice" style="font-size: 20px; color: orangered;">${productPrice}</p>
            </div>
            <div class="cartbtn">
                    <button class="addcart" style ="color: black;">Add to cart</button>
@@ -135,7 +211,7 @@ function displayInfo() {
       </div>
        
       `;
-     
+      
       cartcon.innerHTML = html;
       
            const x = document.querySelector('.x');
@@ -143,24 +219,81 @@ function displayInfo() {
             x.addEventListener('click', ()=>{
                 cartmodal.style.marginTop = "-105em";
             })
-
+                    
+            
+            addtocart2();
     });
   });
+  
 }
-  const cartBtn = document.querySelector('.cart'); 
-  const cartpromodal = document.querySelector('.cartpromodal'); 
 
-  cartBtn.addEventListener('click',()=>{
-    if (cartpromodal.style.right === "-100%") {
-      cartpromodal.style.right = "0";
-    } else{
-      cartpromodal.style.right = "-100%";
-    }
+
+function addtocart2() {
+  // const addCartButtons = document.querySelectorAll('.addcart');
+  const cartcon = document.querySelectorAll('.cartcon');
+
+  cartcon.forEach(container =>{
+       const addCartButtons = container.querySelectorAll('.addcart');
+
+       addCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const productTitle = button.parentNode.parentNode.querySelector(".title").textContent;
+          const productPrice = button.parentNode.parentNode.querySelector(".rprice").textContent;
+          const productImageSrc = container.parentNode.parentNode.querySelector('.cardimg').getAttribute('src');
+      
+          let productExists = false;
+    
+          const existingProducts = document.querySelectorAll('.productModal');
+          existingProducts.forEach(product => {
+            const existingTitle = product.querySelector('.proname p').textContent;
+            if (existingTitle === productTitle) {
+              const countElement = product.querySelector('.countnum');
+              const currentCount = parseInt(countElement.textContent);
+              countElement.textContent = currentCount + 1;
+    
+              const priceElement = product.querySelector('.price');
+              const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+              const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+              priceElement.textContent = `Price: ${updatedPrice.toFixed(2)}`;
+    
+             
+              productExists = true;
+    
+    
+            }
+          });
+    
+          if (!productExists) {
+            addedcart.innerHTML += `
+              <div class="productModal">
+                <div class="proImg">
+                <img style ="width: 50px;" class = "cardimg" src="${productImageSrc}" alt="" srcset="">
+                </div>
+                <div class="proContent">
+                  <div class="proname">
+                    <p>${productTitle}</p>
+                  </div>
+                  <div class="proquantity">
+                    <div class="counter">
+                      <button class="incre">+</button>
+                      <p class="countnum">1</p>
+                      <button class="decre">-</button>
+                    </div>
+                    <div class="price">Price: ${productPrice}</div>   
+                  </div>
+                </div>
+              </div>
+            `;
+          }
+        });
+      });
+
   })
-// for tommorow
+ 
+ 
+}
 
-      // cart.push({
-      //   productTitle,
-      //   productPrice
-      // })
-      // console.log(cart);
+  //  for afty
+
+  //  //make the check out
+  //  //the quantity button
