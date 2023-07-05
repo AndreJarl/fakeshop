@@ -153,6 +153,12 @@ function addTOcart() {
           </div>
         `;
       }
+      Swal.fire({
+        icon: 'success',
+        title: 'Added to cart',
+        showConfirmButton: false,
+        timer: 1500
+      });
     });
   });
 }
@@ -285,15 +291,24 @@ function addtocart2() {
               </div>
             `;
           }
+          Swal.fire({
+            icon: 'success',
+            title: 'Added to cart',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        
         });
       });
 
   })
+
  
  
 }
 
-  //  for afty
+  //  for tommorow
 
-  //  //make the check out
+ 
   //  //the quantity button
+  // the cart number
