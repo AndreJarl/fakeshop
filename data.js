@@ -122,7 +122,7 @@ function addTOcart() {
           const priceElement = product.querySelector('.price');
           const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
           const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
-          priceElement.textContent = `Price: ${updatedPrice.toFixed(2)}`;
+          priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
 
          
           productExists = true;
@@ -254,7 +254,7 @@ function addtocart2() {
               const priceElement = product.querySelector('.price');
               const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
               const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
-              priceElement.textContent = `Price: ${updatedPrice.toFixed(2)}`;
+              priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
     
              
               productExists = true;
