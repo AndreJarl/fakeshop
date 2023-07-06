@@ -3,10 +3,13 @@
 
 body{
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
   
 }
 html {
     scroll-behavior: smooth;
+    margin: 0;
   }
 nav{
     display: flex;
@@ -396,7 +399,7 @@ font-weight: 400;
     position: fixed;
     height: 100%;
    background-color: #fecaca;
-    right: -100%;
+    right: -190%;
     top: 0;
     width: 40%;
     transition: 1s;

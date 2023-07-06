@@ -12,11 +12,11 @@ let arr = [];
 
 
 cartBtn.addEventListener('click',()=>{
-  if (cartpromodal.style.right === "-100%") {
+  if (cartpromodal.style.right === "-190%") {
     cartpromodal.style.right = "0";
     count.innerHTML = arr.length;
   } else{
-    cartpromodal.style.right = "-100%";
+    cartpromodal.style.right = "-190%";
     
   }
 })
