@@ -5,13 +5,19 @@ const closebtn = document.querySelector('.x');
 const addedcart = document.querySelector('.addedcart');
 const cartBtn = document.querySelector('.cart'); 
 const cartpromodal = document.querySelector('.cartpromodal'); 
+const count = document.querySelector('.count');
+
+let arr = [];
+
 
 
 cartBtn.addEventListener('click',()=>{
   if (cartpromodal.style.right === "-100%") {
     cartpromodal.style.right = "0";
+    count.innerHTML = arr.length;
   } else{
     cartpromodal.style.right = "-100%";
+    
   }
 })
 
@@ -100,6 +106,7 @@ function displayPro() {
             addTOcart()
           });
         });
+        count.innerHTML = arr.length;
 }
 
 function addTOcart() {
@@ -155,6 +162,12 @@ function addTOcart() {
             </div>
           </div>
         `;
+        arr.push({
+          productTitle
+       })
+       console.log(arr);
+       count .innerHTML = arr.length;
+        
         const addquantity = document.querySelectorAll('.incre');
         addquantity.forEach(button =>{
               button.addEventListener('click',()=>{
@@ -188,10 +201,13 @@ function addTOcart() {
 
                if (currentCount < 2) {
                  cartItem.parentNode.removeChild(cartItem);
+                 arr.splice(0, 1);
+                 console.log(arr.length);
+                 count.innerHTML = arr.length;
                }
 
               })
-
+              
         })
 
 
@@ -204,6 +220,7 @@ function addTOcart() {
       });
     });
   });
+  
 }
 
 
@@ -307,9 +324,11 @@ function addtocart2() {
     
              
               productExists = true;
-    
+                  
     
             }
+
+
           });
     
           if (!productExists) {
@@ -333,6 +352,13 @@ function addtocart2() {
                 </div>
               </div>
             `;
+              arr.push({
+                 productTitle
+              })
+              console.log(arr);
+              count .innerHTML = arr.length;
+              
+
             const addquantity = document.querySelectorAll('.incre');
             addquantity.forEach(button =>{
                   button.addEventListener('click',()=>{
@@ -365,6 +391,9 @@ function addtocart2() {
     
                    if (currentCount < 2) {
                      cartItem.parentNode.removeChild(cartItem);
+                     arr.splice(0, 1);
+                     console.log(arr.length);
+                     count.innerHTML = arr.length;
                    }
     
                   })
@@ -384,7 +413,7 @@ function addtocart2() {
   })
 
  
- 
+  count.innerHTML = arr.length;
 }
 
   //  for tommorow
@@ -392,3 +421,4 @@ function addtocart2() {
  
   //  //the quantity button
   // the cart number
+ 
