@@ -6,6 +6,7 @@ const addedcart = document.querySelector('.addedcart');
 const cartBtn = document.querySelector('.cart'); 
 const cartpromodal = document.querySelector('.cartpromodal'); 
 
+
 cartBtn.addEventListener('click',()=>{
   if (cartpromodal.style.right === "-100%") {
     cartpromodal.style.right = "0";
@@ -129,6 +130,8 @@ function addTOcart() {
 
 
         }
+
+       
       });
 
       if (!productExists) {
@@ -152,6 +155,46 @@ function addTOcart() {
             </div>
           </div>
         `;
+        const addquantity = document.querySelectorAll('.incre');
+        addquantity.forEach(button =>{
+              button.addEventListener('click',()=>{
+              const countElement = button.parentNode.parentNode.querySelector('.countnum');
+               const currentCount = parseInt(countElement.textContent);
+               countElement.textContent = currentCount + 1;
+     
+               const priceElement = button.parentNode.parentNode.querySelector('.price');
+               const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+               const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+               priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
+
+
+              })
+        });
+
+        const minusquantity = document.querySelectorAll('.decre');
+        minusquantity.forEach(button =>{
+          
+              button.addEventListener('click',()=>{
+              const countElement = button.parentNode.parentNode.querySelector('.countnum');
+               const currentCount = parseInt(countElement.textContent);
+               countElement.textContent = currentCount - 1;
+     
+               const priceElement = button.parentNode.parentNode.querySelector('.price');
+               const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+               const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+               priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
+
+               const cartItem = button.closest('.productModal');
+
+               if (currentCount < 2) {
+                 cartItem.parentNode.removeChild(cartItem);
+               }
+
+              })
+
+        })
+
+
       }
       Swal.fire({
         icon: 'success',
@@ -290,6 +333,43 @@ function addtocart2() {
                 </div>
               </div>
             `;
+            const addquantity = document.querySelectorAll('.incre');
+            addquantity.forEach(button =>{
+                  button.addEventListener('click',()=>{
+                  const countElement = button.parentNode.parentNode.querySelector('.countnum');
+                   const currentCount = parseInt(countElement.textContent);
+                   countElement.textContent = currentCount + 1;
+         
+                   const priceElement = button.parentNode.parentNode.querySelector('.price');
+                   const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+                   const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+                   priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
+         
+                  })
+            })
+
+            const minusquantity = document.querySelectorAll('.decre');
+            minusquantity.forEach(button =>{
+              
+                  button.addEventListener('click',()=>{
+                  const countElement = button.parentNode.parentNode.querySelector('.countnum');
+                   const currentCount = parseInt(countElement.textContent);
+                   countElement.textContent = currentCount - 1;
+         
+                   const priceElement = button.parentNode.parentNode.querySelector('.price');
+                   const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
+                   const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
+                   priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
+    
+                   const cartItem = button.closest('.productModal');
+    
+                   if (currentCount < 2) {
+                     cartItem.parentNode.removeChild(cartItem);
+                   }
+    
+                  })
+    
+            })
           }
           Swal.fire({
             icon: 'success',
