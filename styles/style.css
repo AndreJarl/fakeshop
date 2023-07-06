@@ -421,7 +421,8 @@ section {
     margin-left: 1em;
     margin-right: 1em; }
   .shop1 {
-    margin-right: 0; }
+    margin-right: 0;
+    background-color: #CCCC; }
   nav {
     display: flex;
     gap: 1em;
@@ -429,8 +430,7 @@ section {
     margin: 0;
     margin-top: -.5em;
     align-items: center;
-    border-bottom: 1px solid gray;
-    background-color: #fee2e2;
+    background-color: #f87171;
     position: fixed;
     width: 100%;
     padding-top: .8em;
@@ -539,7 +539,8 @@ section {
     margin-left: 5em;
     margin-right: 5em; }
   .shop1 {
-    margin-right: 0; }
+    margin-right: 0;
+    background-color: #CCCC; }
   nav {
     display: flex;
     gap: 1em;
@@ -547,8 +548,7 @@ section {
     margin: 0;
     margin-top: -.5em;
     align-items: center;
-    border-bottom: 1px solid gray;
-    background-color: #fee2e2;
+    background-color: #f87171;
     position: fixed;
     width: 100%;
     padding-top: .8em;
@@ -738,7 +738,8 @@ section {
     margin-left: 1em;
     margin-right: 1em; }
   .shop1 {
-    margin-right: 0; }
+    margin-right: 0;
+    background-color: #CCCCCC; }
   nav {
     display: flex;
     gap: 1em;
@@ -746,8 +747,7 @@ section {
     margin: 0;
     margin-top: -.5em;
     align-items: center;
-    border-bottom: 1px solid gray;
-    background-color: #fee2e2;
+    background-color: #f87171;
     position: fixed;
     width: 100%;
     padding-top: .8em;
