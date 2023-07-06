@@ -69,7 +69,7 @@ section {
   gap: 2em;
   justify-content: center;
   align-items: center;
-  background-image: url(images/stacked-waves-haikei.svg);
+  background-image: url(/images/stacked-waves-haikei.svg);
   background-repeat: no-repeat;
   background-size: cover;
   /* margin-left: 5em;
@@ -126,7 +126,7 @@ section {
   border-radius: 8px; }
 
 .shop1 {
-  background-image: url(images/shop.svg);
+  background-image: url(/images/shop.svg);
   background-repeat: no-repeat;
   background-size: cover; }
 
