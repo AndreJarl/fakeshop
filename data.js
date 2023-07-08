@@ -10,6 +10,7 @@ const count = document.querySelector('.count');
 let arr = [];
 
 
+let totalPrice = 0;
 
 cartBtn.addEventListener('click',()=>{
   if (cartpromodal.style.right === "-190%") {
@@ -306,11 +307,22 @@ function addtocart2() {
           const productTitle = button.parentNode.parentNode.querySelector(".title").textContent;
           const productPrice = button.parentNode.parentNode.querySelector(".rprice").textContent;
           const productImageSrc = container.parentNode.parentNode.querySelector('.cardimg').getAttribute('src');
-      
+          
+          const priceText = button.parentNode.parentNode.querySelector(".rprice").textContent;
+          const numericPart = priceText.replace(/[^0-9.]/g, '');
+          const finalprice = parseFloat(numericPart);
+
+          totalPrice += finalprice;
+          console.log(finalprice);
+          document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
+
           let productExists = false;
     
           const existingProducts = document.querySelectorAll('.productModal');
           existingProducts.forEach(product => {
+
+            
+
             const existingTitle = product.querySelector('.proname p').textContent;
             if (existingTitle === productTitle) {
               const countElement = product.querySelector('.countnum');
@@ -321,7 +333,9 @@ function addtocart2() {
               const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
               const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
               priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
-    
+             
+
+             
              
               productExists = true;
                   
@@ -352,6 +366,8 @@ function addtocart2() {
                 </div>
               </div>
             `;
+          
+        
               arr.push({
                  productTitle
               })
@@ -370,7 +386,13 @@ function addtocart2() {
                    const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
                    const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                    priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
-         
+
+              
+                   totalPrice = finalprice + totalPrice;
+                   console.log(totalPrice);
+                   console.log(finalprice);
+                   document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
+
                   })
             })
 
@@ -386,16 +408,22 @@ function addtocart2() {
                    const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
                    const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                    priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
-    
-                   const cartItem = button.closest('.productModal');
-    
+                  
+                
+                   totalPrice -= finalprice;
+      
+                   console.log(totalPrice);
+                   document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
+                   
+               
+                    
+                   let cartItem = button.closest('.productModal');
                    if (currentCount < 2) {
                      cartItem.parentNode.removeChild(cartItem);
                      arr.splice(0, 1);
-                     console.log(arr.length);
+                    
                      count.innerHTML = arr.length;
                    }
-    
                   })
     
             })
@@ -416,9 +444,6 @@ function addtocart2() {
   count.innerHTML = arr.length;
 }
 
-  //  for tommorow
-
- 
-  //  //the quantity button
-  // the cart number
- 
+  // problems
+  // the total amount
+  //

@@ -461,7 +461,31 @@ font-weight: 400;
 
 
   }
-  
+  .totalamount{
+      display: flex;
+      gap: 2em;
+      margin-left: 3em;
+
+      p{
+        color: red;
+        font-weight: 500 ;
+      }
+  }
+
+  .ckbtn{
+    display: flex;
+    float: right;
+    margin-right: 4em;
+    padding: 15px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+ }
+ .ckbtn:hover{
+     background-color: #ef4444;
+ }
+
 
  
 
