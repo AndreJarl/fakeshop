@@ -63,7 +63,7 @@ function filterPro() {
                  </div>
                  <div class = "proBtn">
                    <button class="addcart" style ="color: black;">Add to cart</button>
-                   <button class="buynow">Buy now</button>
+                   <button onclick = "buynow()"  class="buynow">Buy now</button>
                    </div>
                </div>
              `;
@@ -98,7 +98,7 @@ function displayPro() {
                 </div>
                 <div class = "proBtn">
                 <button class="addcart" style ="color: black;">Add to cart</button>
-                <button class="buynow">Buy now</button>
+                <button onclick = "buynow()"  class="buynow">Buy now</button>
                 </div>
               </div>
             `;
@@ -348,7 +348,7 @@ function displayInfo() {
            </div>
            <div class="cartbtn">
                    <button class="addcart" style ="color: black;">Add to cart</button>
-                   <button class="buynow">Buy now</button>
+                   <button onclick = "buynow()" class="buynow">Buy now</button>
            </div>
            
       </div>
@@ -577,10 +577,20 @@ function addtocart2() {
   count.innerHTML = arr.length;
 }
 
-  // problems
-  // the total amount
+  // problems:
+  // none!!
   //
  
+function buynow(){
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Thank you for shopping!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+
+}
  
 
   
