@@ -312,9 +312,10 @@ function addtocart2() {
           const numericPart = priceText.replace(/[^0-9.]/g, '');
           const finalprice = parseFloat(numericPart);
 
+          console.log(`totalprice(${totalPrice}) + finalprice(${finalprice})`);
           totalPrice += finalprice;
-          console.log(finalprice);
-          document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
+          console.log(`totalPrice is ${totalPrice}`);
+          document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
 
           let productExists = false;
     
@@ -359,9 +360,9 @@ function addtocart2() {
                     <div class="counter">
                       <button class="incre">+</button>
                       <p class="countnum">1</p>
-                      <button onclick = "getprice(this)" data-price ="${productPrice}"  class="decre">-</button>
+                      <button   class="decre">-</button>
                     </div>
-                    <div  class="price">Price: ${productPrice}</div>   
+                    <div data-price ="${productPrice}" class="price">Price: ${productPrice}</div>   
                   </div>
                 </div>
               </div>
@@ -387,11 +388,21 @@ function addtocart2() {
                    const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                    priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
 
-              
-                     
-                   totalPrice += finalprice;
-                   console.log(finalprice);
-                   document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
+                  //  const priceText = button.parentNode.parentNode.querySelector(".rprice").textContent;
+                  //  const numericPart = priceText.replace(/[^0-9.]/g, '');
+                  //  const finalprice = parseFloat(numericPart);
+                  const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
+                  priceElements.forEach(e =>{
+                    const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
+                        
+                        console.log(productRice);
+                        console.log(`totalprice(${totalPrice}) + Rice(${productRice})`);
+                        totalPrice += productRice;
+                        console.log(`totalPrice is now ${totalPrice}`);
+                        document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
+
+                  })
+
 
 
                   })
@@ -409,13 +420,19 @@ function addtocart2() {
                    const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
                    const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                    priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
-                  
-                  let rpi = getprice(button)
-                  console.log(rpi);
-                   totalPrice -= rpi;
-                  
-                   document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice.toFixed(2)}`;
-                   
+
+                   const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
+                  priceElements.forEach(e =>{
+                    const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
+                        
+                        console.log(productRice);
+                        console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
+                        totalPrice -= productRice;
+                        console.log(`totalPrice is now ${totalPrice}`);
+                        document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
+
+                  })
+
                
                     
                    let cartItem = button.closest('.productModal');
@@ -448,15 +465,9 @@ function addtocart2() {
   // problems
   // the total amount
   //
-  function getprice(price) {
-    
-    const productPriceAttr = price.getAttribute('data-price');
-    
-    const numericString = productPriceAttr.replace(/[^\d.]/g, "");
-    const priceValue = parseFloat(numericString);
-    // Convert productPriceAttr to a numeric value
-    // const priceValue = Number(productPriceAttr);
-    
-   return priceValue;
+  function getprice(rice) {
+    const productPriceAttr = rice.dataset.price;
+    const priceValue = parseFloat(productPriceAttr);
+    return priceValue;
   }
   
