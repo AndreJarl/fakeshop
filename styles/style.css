@@ -427,6 +427,9 @@ section {
 
 /* --------------------MOBILE VIEW-------------- */
 @media only screen and (max-width: 700px) and (min-width: 500px) {
+  .totalamount {
+    font-size: 14px;
+    gap: 1em; }
   .cartpromodal {
     width: 100%; }
   .filter {
@@ -746,6 +749,9 @@ section {
     margin-right: 1em; } }
 
 @media only screen and (max-width: 499px) and (min-width: 200px) {
+  .totalamount {
+    font-size: 14px;
+    gap: 1em; }
   .filter {
     /* margin-left: 4em;
             margin-top: 1em; */

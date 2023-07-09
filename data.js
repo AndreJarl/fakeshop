@@ -10,7 +10,8 @@ const count = document.querySelector('.count');
 let arr = [];
 
 
-let totalPrice = 0;
+let totalPrice = 0.00;
+
 
 cartBtn.addEventListener('click',()=>{
   if (cartpromodal.style.right === "-190%") {
@@ -91,7 +92,7 @@ function displayPro() {
                 <p class="title">${product.title}</p>
                 <p class="desc" style = "display: none;">${product.description}</p>
                   <div class="prices">
-                    <p class="rpice">₱ ${product.price}</p>
+                    <p  data-price = "${product.price}" class="rpice">₱ ${product.price}</p>
                     <p class="sold">${product.rating.count} sold</p>
                   </div>
                 </div>
@@ -119,6 +120,24 @@ function addTOcart() {
       const productPrice = button.parentNode.parentNode.querySelector(".rpice").textContent;
       const productImageSrc = button.parentNode.parentNode.querySelector('.cardimg img').getAttribute('src');
       let productExists = false;
+       
+      
+       ///assign data attribute here
+       const priceText = button.parentNode.parentNode.querySelector(".rpice").textContent;
+       const numericPart = priceText.replace(/[^0-9.]/g, '');
+       const finalprice = parseFloat(numericPart);
+       
+       let delivery = 190*(arr.length+1);
+      
+       
+       console.log(`totalprice(${totalPrice}) + finalprice(${finalprice})`);
+       totalPrice += finalprice;
+       console.log(`totalPrice is ${totalPrice}`);
+       let totalamount = totalPrice + delivery;
+       document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+       document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+       document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
+
 
       const existingProducts = document.querySelectorAll('.productModal');
       existingProducts.forEach(product => {
@@ -158,7 +177,7 @@ function addTOcart() {
                   <p class="countnum">1</p>
                   <button class="decre">-</button>
                 </div>
-                <div class="price" style= "font-size : 10px;">Price: ${productPrice}</div>   
+                <div data-price ="${productPrice}" class="price" style= "font-size : 10px;">Price: ${productPrice}</div>   
               </div>
             </div>
           </div>
@@ -181,6 +200,22 @@ function addTOcart() {
                const updatedPrice = currentPrice + parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
 
+               const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
+               priceElements.forEach(e =>{
+                 const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
+                     
+                     console.log(productRice);
+                     console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
+                     totalPrice = totalPrice + productRice;
+                     console.log(`totalPrice is ${totalPrice}`);
+                     totalamount = totalPrice + delivery;
+                     document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+                      document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+                      document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
+
+
+               })
+
 
               })
         });
@@ -198,6 +233,7 @@ function addTOcart() {
                const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
 
+            
                const cartItem = button.closest('.productModal');
 
                if (currentCount < 2) {
@@ -205,10 +241,50 @@ function addTOcart() {
                  arr.splice(0, 1);
                  console.log(arr.length);
                  count.innerHTML = arr.length;
+                 
                }
 
+               const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
+               priceElements.forEach(e =>{
+                 const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
+                     
+                     console.log(productRice);
+                     console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
+                     totalPrice -= productRice;
+                     delivery = 190*(arr.length);
+                     totalamount = totalPrice + delivery;
+                     console.log(`delivery is ${delivery}`);
+                     document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+                     console.log(`totalPrice is now ${totalPrice}`);
+                     document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+                     document.querySelector('.totalPrice').textContent = `SubTotal: ₱${totalamount.toFixed(2)}`;
+
+               })
+
               })
-              
+              const checkoutBtn = document.querySelector('.ckbtn');
+              checkoutBtn.addEventListener('click', ()=>{
+      
+                let cartItem = document.querySelector('.productModal'); 
+                cartItem.parentNode.removeChild(cartItem);
+                arr.splice(0, 1);
+               
+                count.innerHTML = arr.length;
+      
+                totalPrice = 0;
+                totalamount = 0;
+                delivery = 190;
+                document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+                document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+                document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Thank you for shopping!',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+
+              })
         })
 
 
@@ -308,17 +384,27 @@ function addtocart2() {
           const productPrice = button.parentNode.parentNode.querySelector(".rprice").textContent;
           const productImageSrc = container.parentNode.parentNode.querySelector('.cardimg').getAttribute('src');
           
+          ///assign data attribute here
           const priceText = button.parentNode.parentNode.querySelector(".rprice").textContent;
           const numericPart = priceText.replace(/[^0-9.]/g, '');
           const finalprice = parseFloat(numericPart);
 
-          console.log(`totalprice(${totalPrice}) + finalprice(${finalprice})`);
-          totalPrice += finalprice;
-          console.log(`totalPrice is ${totalPrice}`);
-          document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
+          let delivery = 190*(arr.length+1);
+      
+       
+       console.log(`totalprice(${totalPrice}) + finalprice(${finalprice})`);
+       totalPrice += finalprice;
+       console.log(`totalPrice is ${totalPrice}`);
+       let totalamount = totalPrice + delivery;
+       document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+       document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+       document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
 
           let productExists = false;
     
+       
+        
+
           const existingProducts = document.querySelectorAll('.productModal');
           existingProducts.forEach(product => {
 
@@ -396,13 +482,16 @@ function addtocart2() {
                     const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
                         
                         console.log(productRice);
-                        console.log(`totalprice(${totalPrice}) + Rice(${productRice})`);
-                        totalPrice += productRice;
-                        console.log(`totalPrice is now ${totalPrice}`);
-                        document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
-
+                        console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
+                        totalPrice = totalPrice + productRice;
+                        console.log(`totalPrice is ${totalPrice}`);
+                        totalamount = totalPrice + delivery;
+                        document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+                         document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+                         document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
+   
+   
                   })
-
 
 
                   })
@@ -420,30 +509,33 @@ function addtocart2() {
                    const currentPrice = parseFloat(priceElement.textContent.replace(/[^0-9.-]+/g, ''));
                    const updatedPrice = currentPrice - parseFloat(productPrice.replace(/[^0-9.-]+/g, ''));
                    priceElement.textContent = `Price:₱ ${updatedPrice.toFixed(2)}`;
-
-                   const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
-                  priceElements.forEach(e =>{
-                    const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
-                        
-                        console.log(productRice);
-                        console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
-                        totalPrice -= productRice;
-                        console.log(`totalPrice is now ${totalPrice}`);
-                        document.querySelector('.totalPrice').textContent = `Total Amount: ${totalPrice}`;
-
-                  })
-
-               
+            
                     
-                   let cartItem = button.closest('.productModal');
+                   let cartItem = button.closest('.productModal'); 
                    if (currentCount < 2) {
                      cartItem.parentNode.removeChild(cartItem);
                      arr.splice(0, 1);
                     
                      count.innerHTML = arr.length;
                    }
-                  })
+
+                   const priceElements = button.parentNode.parentNode.querySelectorAll('.price');
+                   priceElements.forEach(e =>{
+                     const productRice = parseFloat(e.dataset.price.replace(/[^\d.]/g, ''));
+                         
+                         console.log(productRice);
+                         console.log(`totalprice(${totalPrice}) - Rice(${productRice})`);
+                         totalPrice -= productRice;
+                         delivery = 190*(arr.length);
+                         totalamount = totalPrice + delivery;
+                         console.log(`delivery is ${delivery}`);
+                         document.querySelector('.delivery').textContent = `Delivery fee: ${delivery.toFixed(2)}`;
+                         console.log(`totalPrice is now ${totalPrice}`);
+                         document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+                         document.querySelector('.totalPrice').textContent = `SubTotal: ₱${totalamount.toFixed(2)}`;
     
+                   })
+                  })
             })
           }
           Swal.fire({
@@ -454,6 +546,29 @@ function addtocart2() {
           });
         
         });
+        const checkoutBtn = document.querySelector('.ckbtn');
+        checkoutBtn.addEventListener('click', ()=>{
+
+          let cartItem = document.querySelector('.productModal'); 
+          cartItem.parentElement.removeChild(cartItem);
+          arr.splice(0, 1);
+         
+          count.innerHTML = arr.length;
+
+          totalPrice = 0;
+          totalamount = 0;
+          delivery = 190;
+          document.querySelector('.delivery').textContent = `Delivery fee: ₱${delivery.toFixed(2)}`;
+          document.querySelector('.subtotal').textContent = `SubTotal: ₱${totalPrice.toFixed(2)}`;
+          document.querySelector('.totalPrice').textContent = `Total Amount: ₱${totalamount.toFixed(2)}`;
+          Swal.fire({
+            icon: 'success',
+            title: 'Thank you for shopping!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+
       });
 
   })
@@ -465,9 +580,7 @@ function addtocart2() {
   // problems
   // the total amount
   //
-  function getprice(rice) {
-    const productPriceAttr = rice.dataset.price;
-    const priceValue = parseFloat(productPriceAttr);
-    return priceValue;
-  }
+ 
+ 
+
   
