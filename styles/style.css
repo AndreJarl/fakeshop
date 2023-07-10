@@ -356,8 +356,6 @@ section {
   z-index: 456; }
   .cartpromodal .productModal {
     border: 2px solid red;
-    margin-left: 1em;
-    margin-right: 1em;
     margin-top: 1em;
     display: flex;
     flex-direction: row;
