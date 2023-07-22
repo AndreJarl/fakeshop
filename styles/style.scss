@@ -18,9 +18,9 @@ nav{
     gap: 1em;
     /* margin-left: 5em;
     margin-right: 5em; */
-    padding: 0;
+    padding-bottom: 1em;
     margin: 0;
-    margin-top: -.5em;
+    margin-top: -5em;
     align-items: center;
     // border-bottom: .5px  gray;
  
@@ -86,24 +86,25 @@ section{
    /* margin-left: 5em;
    margin-right: 5em; */
    padding-top: 5em;
+   margin-top: 5em;
    
 }
 .sloganText{
-    font-size: 30px;
+    font-size: 33px;
     font-weight: 600;
    
 }
 .sloganText1{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     margin-top: -1em;
    margin-right: 10em;
    margin-bottom: 1em;
 }
 .slogan{
-    margin-left: 7em;
+    margin-left: 8em;
     margin-right: 2em;
-   margin-top: -5em;
+   margin-top: -10em;
 }
 
 .slogan button{
@@ -119,6 +120,8 @@ section{
 .heroImg{
      display: flex;
      align-items: center;
+     justify-content: center;
+     
 }
 .shopImg{
     width: 600px;
@@ -536,9 +539,9 @@ font-weight: 400;
          nav{
             display: flex;
             gap: 1em;
-            padding: 0;
+            padding-bottom: 1em;
             margin: 0;
-            margin-top: -.5em;
+            margin-top: -5em;
             align-items: center;
             background-color:#f87171;
             position: fixed;
@@ -572,6 +575,7 @@ font-weight: 400;
            background-size: cover;
            padding-top: 10em;
            margin-right: 0;
+           margin-top: 5em;
         }
 
         .sloganText{
@@ -702,9 +706,9 @@ font-weight: 400;
          nav{
             display: flex;
             gap: 1em;
-            padding: 0;
+            padding-bottom: 1em;
             margin: 0;
-            margin-top: -.5em;
+            margin-top: -5em;
             align-items: center;
             background-color:#f87171;
             position: fixed;
@@ -738,6 +742,7 @@ font-weight: 400;
            background-size: cover;
            padding-top: 10em;
            margin-right: 0;
+           margin-top: 5em;
         }
 
         .sloganText{
@@ -982,15 +987,15 @@ font-weight: 400;
              nav{
                 display: flex;
                 gap: 1em;
-                padding: 0;
+                padding-bottom: 1em;
                 margin: 0;
-                margin-top: -.5em;
+                margin-top: -5em;
                 align-items: center;
                 background-color:#f87171;
                 position: fixed;
                 width: 100%;
                 padding-top: .8em;
-              
+                
                 z-index: 567;
              }
     
@@ -1018,6 +1023,7 @@ font-weight: 400;
                background-size: cover;
                padding-top: 10em;
                margin-right: 0;
+               margin-top: 5em;
             }
     
             .sloganText{

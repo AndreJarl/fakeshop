@@ -15,9 +15,9 @@ nav {
   gap: 1em;
   /* margin-left: 5em;
     margin-right: 5em; */
-  padding: 0;
+  padding-bottom: 1em;
   margin: 0;
-  margin-top: -.5em;
+  margin-top: -5em;
   align-items: center;
   background-color: #f87171;
   position: fixed;
@@ -76,23 +76,24 @@ section {
   background-size: cover;
   /* margin-left: 5em;
    margin-right: 5em; */
-  padding-top: 5em; }
+  padding-top: 5em;
+  margin-top: 5em; }
 
 .sloganText {
-  font-size: 30px;
+  font-size: 33px;
   font-weight: 600; }
 
 .sloganText1 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   margin-top: -1em;
   margin-right: 10em;
   margin-bottom: 1em; }
 
 .slogan {
-  margin-left: 7em;
+  margin-left: 8em;
   margin-right: 2em;
-  margin-top: -5em; }
+  margin-top: -10em; }
 
 .slogan button {
   background-color: #b91c1c;
@@ -106,7 +107,8 @@ section {
 
 .heroImg {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
 
 .shopImg {
   width: 600px;
@@ -451,9 +453,9 @@ section {
   nav {
     display: flex;
     gap: 1em;
-    padding: 0;
+    padding-bottom: 1em;
     margin: 0;
-    margin-top: -.5em;
+    margin-top: -5em;
     align-items: center;
     background-color: #f87171;
     position: fixed;
@@ -478,7 +480,8 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10em;
-    margin-right: 0; }
+    margin-right: 0;
+    margin-top: 5em; }
   .sloganText {
     font-size: 25px;
     font-weight: 600;
@@ -569,9 +572,9 @@ section {
   nav {
     display: flex;
     gap: 1em;
-    padding: 0;
+    padding-bottom: 1em;
     margin: 0;
-    margin-top: -.5em;
+    margin-top: -5em;
     align-items: center;
     background-color: #f87171;
     position: fixed;
@@ -596,7 +599,8 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10em;
-    margin-right: 0; }
+    margin-right: 0;
+    margin-top: 5em; }
   .sloganText {
     font-size: 25px;
     font-weight: 600;
@@ -771,9 +775,9 @@ section {
   nav {
     display: flex;
     gap: 1em;
-    padding: 0;
+    padding-bottom: 1em;
     margin: 0;
-    margin-top: -.5em;
+    margin-top: -5em;
     align-items: center;
     background-color: #f87171;
     position: fixed;
@@ -798,7 +802,8 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 10em;
-    margin-right: 0; }
+    margin-right: 0;
+    margin-top: 5em; }
   .sloganText {
     font-size: 25px;
     font-weight: 600;
