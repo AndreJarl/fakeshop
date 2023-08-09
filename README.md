@@ -1,6 +1,8 @@
 # fakeshop
 Fakeshop is an E-commerce Store using API created with Vanilla Javascript and Sass
 
+Live Demo: https://andrejarl.github.io/fakeshop/commerce.html
+
 # PC view
 ![hero](https://github.com/AndreJarl/fakeshop/assets/104331025/603630eb-2694-408a-b54e-75f81a3be9fb)
 
